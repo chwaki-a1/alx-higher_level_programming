@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 
-def remove_char_at(str, n):
-    str2 = ''
-    if n > len(str) or n < 0:
-        return str
-    for x in str:
-        if x != str[n]:
-            str2 += x
-            return str2
+i = 0
+
+for c in range(ord('z'), ord('a') - 1, -1):
+
+    print("{}".format(chr(c - i)), end="")
+    i = 32 if i == 0 else 0
