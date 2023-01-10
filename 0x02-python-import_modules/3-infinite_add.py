@@ -1,13 +1,10 @@
 #!/usr/bin/python3
 
-from sys import argv
-
 if __name__ == "__main__":
+    """Print additon of all args."""
+    import sys
 
     n = 0
-
-    for i in range(len(argv) - 1):
-
-        n += int(argv[i + 1])
-
-    print("{:d}".format(n))
+    for i in range(len(sys.argv) - 1):
+        n += int(sys.argv[i + 1])
+    print("{}".format(n))
