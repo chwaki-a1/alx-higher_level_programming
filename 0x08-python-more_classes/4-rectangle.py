@@ -6,6 +6,7 @@ A rectangle with width and height.
 
 """
 
+
 class Rectangle:
 
     """
