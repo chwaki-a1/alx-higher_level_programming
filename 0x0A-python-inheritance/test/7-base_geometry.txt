@@ -1,0 +1,79 @@
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+>>> bg = BaseGeometry()
+
+>>> bg.integer_validator("Taiwo", 87)
+
+>>> bg.integer_validator("Taiwo", "87")
+
+Traceback (most recent call last):
+
+    ...
+
+TypeError: Taiwo must be an integer
+
+>>> bg.integer_validator("Peter", -56)
+
+Traceback (most recent call last):
+
+    ...
+
+ValueError: Peter must be greater than 0
+
+>>> bg.integer_validator("Taiwo", 0)
+
+Traceback (most recent call last):
+
+    ...
+
+ValueError: Taiwo must be greater than 0
+
+>>> bg.integer_validator("Taiwo", (87,))
+
+Traceback (most recent call last):
+
+    ...
+
+TypeError: Taiwo must be an integer
+
+>>> bg.integer_validator("Taiwo", [87])
+
+Traceback (most recent call last):
+
+    ...
+
+TypeError: Taiwo must be an integer
+
+>>> bg.integer_validator("Taiwo", 87.9)
+
+Traceback (most recent call last):
+
+    ...
+
+TypeError: Taiwo must be an integer
+
+>>> bg.integer_validator("Taiwo", -5.8)
+
+Traceback (most recent call last):
+
+    ...
+
+TypeError: Taiwo must be an integer
+
+>>> bg.integer_validator("Taiwo", {"tee": 98})
+
+Traceback (most recent call last):
+
+    ...
+
+TypeError: Taiwo must be an integer
+
+>>> bg.integer_validator("Taiwo", 0.7)
+
+Traceback (most recent call last):
+
+    ...
+
+TypeError: Taiwo must be an integer
+
+
