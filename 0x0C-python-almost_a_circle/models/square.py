@@ -1,53 +1,47 @@
 #!/usr/bin/python3
-"""square
-"""
-from models.rectangle import Rectangle
+"""Square class based on Rectangle"""
+from .rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """Inherits from Rectangle
-    """
+    """Square class based on Rectangle. No new attributes."""
 
     def __init__(self, size, x=0, y=0, id=None):
-        super().__init__(width=size, height=size, x=x, y=y, id=id)
+        super().__init__(size, size, x, y, id)
+
+    def __str__(self):
+        return "[Square] ({}) {}/{} - {}".\
+            format(self.id, self.x, self.y, self.width)
 
     @property
     def size(self):
         return self.width
 
     @size.setter
-    def size(self, value):
-        """size needs to be an int
-        """
-
-        self.width = value
-        self.height = value
-
-    def __str__(self):
-        """Returns formatted information display
-        """
-
-        return "[{}] ({}) {}/{} - {}".format(self.__class__.__name__,
-                                             self.id, self.x, self.y,
-                                             self.width)
+    def size(self, size):
+        self.width = size
+        self.height = size
 
     def update(self, *args, **kwargs):
-        if len(kwargs) != 0:
-            for k, v in kwargs.items():
-                setattr(self, k, v)
-        elif len(args) != 0:
-            try:
-                self.id = args[0]
-                self.size = args[1]
-                self.x = args[2]
-                self.y = args[3]
-            except IndexError:
-                pass
-        else:
-            print()
+        """Updates Rectangle attributes. In the following order if positional:
+        id, width, height, x, y
+        """
+        numargs = len(args)
+        if numargs > 0:
+            self.id = args[0]
+        if numargs > 1:
+            self.width = args[1]
+            self.height = args[1]
+        if numargs > 2:
+            self.x = args[2]
+        if numargs > 3:
+            self.y = args[3]
+        if numargs == 0:
+            for key, value in kwargs.items():
+                exec("self.{} = {}".format(key, value))
 
     def to_dictionary(self):
-        """Returns a dict representation
-        """
-
-        return {'id': self.id, 'x': self.x, 'size': self.width, 'y': self.y}
+        """Returns a dictionary of the Rectangle instance's attributes"""
+        newdict = {"id": self.id, "size": self.width,
+                   "x": self.x, "y": self.y}
+        return newdict
